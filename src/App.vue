@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <LibNavi msg="Welcome to Your Vue.js App"/>
-    <LibSearch class="ct"></LibSearch>
+<!--    <LibSearch class="ct"></LibSearch>-->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -10,12 +11,10 @@ import LibNavi from './components/LibNavi.vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import Vue from 'vue'
-import LibSearch from "@/components/LibSearch";
 Vue.use(ElementUI)
 export default {
   name: 'App',
   components: {
-    LibSearch,
     LibNavi
   }
 }
