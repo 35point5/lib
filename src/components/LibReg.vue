@@ -3,12 +3,12 @@
     <el-main>
       <el-row  type="flex" justify="center">
         <el-col :span="6">
-          <el-input placeholder="请输入用户名" v-model="Name"></el-input>
+          <el-input placeholder="请输入用户名" v-model="usrInfo.Name"></el-input>
         </el-col>
       </el-row>
       <el-row  type="flex" justify="center">
         <el-col :span="6">
-          <el-input placeholder="请输入密码" v-model="Password"></el-input>
+          <el-input placeholder="请输入密码" v-model="usrInfo.Password"></el-input>
         </el-col>
       </el-row>
       <el-row  type="flex" justify="center">
@@ -26,14 +26,17 @@ export default {
   name: "LibReg",
   data(){
     return{
-      Name:"",
-      Password:""
+      usrInfo:{
+        Name:"",
+        Password:""
+      }
     }
   },
   methods:{
     submit(){
       const axios = require('axios');
-      axios.post('/lib/register?Name=233&Password=666')
+
+      axios.post('/lib/register',this.usrInfo)
       console.log(this.username,this.password)
     }
   }
