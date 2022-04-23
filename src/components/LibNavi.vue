@@ -7,6 +7,7 @@
         <el-row type="flex" justify="end">
           <el-menu-item index="/search" class="rt">搜索</el-menu-item>
           <el-menu-item index="/register" class="rt">注册</el-menu-item>
+          <el-menu-item index="/login" class="rt">登录</el-menu-item>
         </el-row>
       </el-menu>
 

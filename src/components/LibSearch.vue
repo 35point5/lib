@@ -21,14 +21,18 @@
         <el-button @click="search()">搜索</el-button>
       </el-col>
     </el-row>
-    <el-row v-for="item in this.result" :key="item.ISBN">
-      {{item.Title}}
-    </el-row>
+    <el-collapse v-model="activeNames">
+      <el-collapse-item v-for="item in result" :key="item.ISBN">
+        <template slot="title">
+          <el-button size="small" @click="borrow(item.ISBN)">借阅</el-button><el-button type="danger" size="small">删除</el-button>{{item.Title}}
+        </template>
+      </el-collapse-item>
+    </el-collapse>
   </el-main>
   </el-container>
 </template>
 <script>
-// import axios from "axios";
+
 
 export default {
   data() {
@@ -68,6 +72,16 @@ export default {
         console.log(error);
       });
 
+    },
+    borrow(ISBN){
+      const axios = require('axios');
+      console.log(ISBN)
+      axios.post('/lib/borrow',{ISBN:ISBN,Number:1}).then((resp)=>{
+        let res=resp.status
+        console.log(res)
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   }
 };
